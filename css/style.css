@@ -1,0 +1,213 @@
+html {
+    background: url(../img/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+input {
+    width: 100%;
+    height: 40px;
+    font-size: 130%;
+    padding-left: 7px;
+}
+select {
+    width: 100%;
+    height: 40px;
+    font-size: 130%;
+    padding-left: 7px;
+    color: grey;
+}
+button {
+    width: 100%;
+    height: 40px;
+}
+table td {
+    valign: middle;
+}
+#content {
+    width: 700px;
+    height: 350px;
+    opacity: 0.9;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+#add {
+    margin: 0 10px 20px 10px;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
+.no-padding {
+    padding-left:0;
+    padding-right:0;
+}
+.white {
+    margin: 0 10px 0 10px;
+    background-color: white;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.priority {
+    border: 2px solid #bd4147;
+}
+.remove-icon {
+    font-size: 0.7em;
+    color: #a94442;
+}
+
+
+
+.combobox {
+    position: relative;
+}
+.tagselect--frameless {
+    border-color: transparent;
+}
+.tagselect {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #fff;
+    border: 1px solid #a6a9ae;
+    cursor: text;
+}
+.tagselect__item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 4px;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    line-height: 27px;
+    color: #333;
+    border: 1px solid transparent;
+    background-color: #fbeeb9;
+    max-width:100%;
+}
+.tagselect__item span {
+    display:inline-block;
+    max-width: 92%;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.tagselect__input {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 38px;
+    padding: 0;
+    margin-bottom: 0;
+    line-height: 38px;
+    border: 1px solid transparent;
+    outline: 0;
+}
+.combobox__body--frameless {
+    border-top: 1px solid #a6a9ae;
+}
+.combobox__body--open {
+    display: block;
+}
+.combobox__body {
+    position: absolute;
+    top: 91%;
+    width: 95%;
+    max-height: 400px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow: auto;
+    border: 1px solid #a6a9ae;
+    background-color: #fff;
+    border-top: none;
+    margin: auto;
+    z-index: 10;
+    box-sizing: border-box;
+    box-shadow: 0 6px 6px rgba(0,0,0,.2);
+}
+.list-unstyled {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+li:hover {
+    background-color: #fbeeb9;
+}
+.combobox__item {
+    display: block;
+    min-height: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+    line-height: 40px;
+}
+.combobox__link {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+}
+.form__label--muted {
+    color: #a6a9ae;
+}
+.form__label--spaced {
+    margin-bottom: 10px;
+}
+.form__label {
+    display: block;
+}
+@media only screen and (min-width: 768px){
+    .grid--top>.grid__item {
+        vertical-align: top;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .grid--top > .grid__item {
+        vertical-align: top;
+    }
+}
+
+@media only screen and (min-width: 1020px) {
+    .e-12--desk {
+        width: 480px;
+    }
+}
+
+@media only screen and (min-width: 1020px) {
+    .grid__item {
+        display: inline-block;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .grid {
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+    .grid--center--palm {
+        text-align: center;
+    }
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.grid__item {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+    direction: ltr;
+    box-sizing: border-box;
+}

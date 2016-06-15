@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Sourcing list</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!--Latest Font awesome version-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!--Default style file-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--Angular-->
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-cookies.js"></script>
+
+    <!--Controllers-->
+    <script src="js/app.js"></script>
+</head>
+<body ng-controller="ListCtrl">
+<div id="content">
+    <div id="add" class="row">
+        <div class="col-md-5 no-padding-left">
+            <input id="name" placeholder="Name" ng-model="listCtrl.candidate.name">
+        </div>
+        <div class="col-md-5 no-padding-left">
+            <div class="tagselect tagselect--frameless">
+                <div class="tagselect__item" ng-repeat="chosen in listCtrl.chosenPositions">
+                    <span>{{chosen.positionName}}</span>
+                    <a href="#" ng-click="listCtrl.removeFromChosen(chosen)" class="tagselect__close">
+                        <span class="glyphicon glyphicon-remove remove-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <input class="tagselect__input" placeholder="Position" ng-focus="focus=true" ng-model="query">
+            </div>
+            <div class="combobox__body combobox__body--open combobox__body--frameless" ng-show="focus">
+                <ul class="list-unstyled">
+                    <li class="combobox__item" ng-repeat="pos in listCtrl.positions | filter:query as results"
+                        ng-click="$parent.listCtrl.choosePosition(pos)">{{pos.positionName}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2 no-padding">
+            <button type="button" class="btn btn-success" ng-click="listCtrl.addCandidate(listCtrl.candidate)">Add</button>
+        </div>
+    </div>
+    <div id="search" class="row white">
+        <input placeholder="Search.." ng-model="candidateQuery">
+    </div>
+    <div id="list" class="row white">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th><span class="glyphicon glyphicon-earphone"></span></th>
+                <th><span class="glyphicon glyphicon-hand-right"></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="candidate in listCtrl.candidates | filter:candidateQuery as results">
+                <th scope="row"><img class="img-circle" src="img/person.png"></th>
+                <td>{{candidate.name}}</td>
+                <td><span ng-repeat="position in candidate.positions">{{position.positionName}}{{$last ? '' : ', '}}</span></td>
+                <td><span class="glyphicon glyphicon-ok" ng-class="{ 'text-success': candidate.wasCalled, '' : !candidate.wasCalled}" ng-click="listCtrl.setCall(candidate)"/></td>
+                <td><span class="glyphicon glyphicon-ok" ng-class="{ 'text-success': candidate.wasGood, '' : !candidate.wasGood}" ng-click="listCtrl.setGood(candidate)"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
