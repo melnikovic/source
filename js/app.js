@@ -3,6 +3,9 @@
  */
 'use strict';
 var myApp = angular.module('myApp', ['ngCookies']);
+myApp.config(['$httpProvider', function ($httpProvider) {
+
+}]);
 myApp.controller('ListCtrl', ['$scope', '$cookies', '$http', function ($scope, $cookies, $http) {
 
     var listCtrl = {
@@ -44,7 +47,7 @@ myApp.controller('ListCtrl', ['$scope', '$cookies', '$http', function ($scope, $
             candidate.positions = listCtrl.chosenPositions;
             $http.post('api/v1/candidates/addCandidate.php', candidate).then(function (res) {
                 candidate.id = res.data.candidateId;
-                listCtrl.candidates.push(candidate);
+                listCtrl.candidates.unshift(candidate);
             });
         },
         setCall: function(candidate) {

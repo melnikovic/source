@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Sourcing list</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!--Latest Font awesome version-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!--Default style file-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--Angular-->
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-cookies.js"></script>
+
+    <!--Controllers-->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/LoginCtrl.js"></script>
+</head>
+<body ng-controller="LoginCtrl">
+<div id="content-horizontal">
+    <div class="row">
+        <form class="form-horizontal" name="signInForm">
+            <fieldset>
+                <div id="legend">
+                    <legend class="">Login</legend>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="email">Username</label>
+                    <div class="controls">
+                        <!--ng-pattern for regex email validation-->
+                        <input type="email" id="email" name="email" placeholder="" class="form-control input-lg" ng-model="email"
+                               ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"
+                               ng-minlength="5" required>
+                        <p class="help-block">Please provide your E-mail</p>
+                        <!--email validation errors-->
+                        <div class="custom-error" ng-show="signInForm.email.$dirty && signInForm.email.$invalid">
+                            <span ng-show="signInForm.email.$error.required">INVALID: Username is required</span>
+                            <span ng-show="signInForm.email.$error.pattern">INVALID: Username is not valid email</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="password">Password</label>
+                    <div class="controls">
+                        <input type="password" id="password" name="password" placeholder="" class="form-control input-lg"
+                               ng-model="password" ng-minlength="6" equals="{{rePassword}}" required>
+                        <p class="help-block">Password should be at least 6 characters</p>
+                        <div ng-show="signInForm.email.$valid">
+                            <!--password validation errors-->
+                            <div class="custom-error"
+                                 ng-show="signInForm.password.$dirty && signInForm.password.$invalid">
+                                <span ng-show="signInForm.password.$error.required">INVALID: Password is required</span>
+                                <span ng-show="signInForm.password.$error.minlength">INVALID: Password should be minimum 6 character</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <!-- Button -->
+                    <div class="controls">
+                        <a id="register" class="btn btn-success" ng-click="sgLogin.login(email, password)" ng-disabled="signInForm.$invalid">Login</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</body>
+</html>
