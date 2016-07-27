@@ -6,6 +6,7 @@
  * Date: 15.06.2016
  * Time: 18:10
  */
+error_reporting(0);
 require_once('../../config.php');
 class getCandidates
 {
@@ -63,8 +64,8 @@ class getCandidates
             $con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
             $sql = "SELECT c.id, c.wasCalled, c.wasGood, c.addedBy, c.name, c.registered, u.userName, GROUP_CONCAT(cp.positionId, ' ', cp.positionName) as positions
                     FROM candidates as c
-                    INNER JOIN candidates_positions as cp ON c.id=cp.candidateId
-                    INNER JOIN users as u ON c.addedBy=u.id
+                    LEFT JOIN candidates_positions as cp ON c.id=cp.candidateId
+                    LEFT JOIN users as u ON c.addedBy=u.id
                     GROUP BY c.id
                     ORDER BY c.id DESC";
             $stmt = $con->prepare($sql);

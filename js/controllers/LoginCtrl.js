@@ -1,12 +1,13 @@
 "use strict";
-myApp.controller('LoginCtrl', ['$scope', '$cookies', '$http', function ($scope, $cookies, $http) {
+myApp.controller('LoginCtrl', ['$scope', '$cookies', '$http', '$location', '$rootScope', function ($scope, $cookies, $http, $location, $rootScope) {
 
     var sgLogin = {
         login: function(email, password) {
             var data = {'userName':email, 'password': password};
             $http.post('api/v1/users/login.php', data).then(function (res) {
-                $cookies.put('user', res.data);
-                $http.defaults.headers.common.Authorization = 'Bearer '+res.data.token;
+                $cookies.putObject('user', res.data);
+                $rootScope.user = res.data;
+                $location.path("/");
             });
         }
 
