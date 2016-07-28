@@ -10,9 +10,17 @@ myApp.config(function ($routeProvider) {
             controller: 'LoginCtrl',
             isLogin: true
         })
+        .when("/register", {
+            templateUrl: 'view/register.html',
+            controller: 'RegisterCtrl'
+        })
         .when("/home", {
             templateUrl: 'view/home.html',
             controller: 'ListCtrl'
+        })
+        .when("/statistic", {
+            templateUrl: 'view/statistic.html',
+            controller: 'StatisticCtrl'
         })
         .otherwise({
             redirectTo: '/home'

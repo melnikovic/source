@@ -77,7 +77,8 @@ class getCandidates
                 $positions = explode(",", $result['positions']);
                 foreach($positions as $s){
                     $components = explode(" ", $s);
-                    $tmp_arr['positions'][] = array('positionId' => $components[0], 'positionName' => $components[1]);
+                    $positionName = substr(substr($s, strpos($s, ' ')), 1);
+                    $tmp_arr['positions'][] = array('positionId' => $components[0], 'positionName' => $positionName);
                 }
                 $result_arr[] = $tmp_arr;
             }

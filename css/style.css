@@ -27,16 +27,24 @@ table td {
 }
 #content {
     width: 700px;
-    height: 350px;
+    height: 750px;
     opacity: 0.9;
 
     position: absolute;
-    top:0;
+    top:400px;
     bottom: 0;
     left: 0;
     right: 0;
 
     margin: auto;
+    overflow:hidden;
+}
+#list {
+    height: 250px;
+    overflow-y:scroll;
+}
+#list::-webkit-scrollbar {
+    display: none;
 }
 #content-horizontal {
     width: 400px;
@@ -223,4 +231,8 @@ form {
     vertical-align: top;
     direction: ltr;
     box-sizing: border-box;
+}
+
+.position-name {
+    width: 50%;
 }

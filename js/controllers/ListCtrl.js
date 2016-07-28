@@ -36,12 +36,15 @@ myApp.controller('ListCtrl', ['$scope', '$cookies', '$http', function ($scope, $
         },
         addCandidate: function (candidate) {
             // TODO: Add user ID
-            candidate.addedBy = 1;
+            var user = $cookies.getObject('user');
+            candidate.addedBy = $cookies.getObject('user').usedId;
             candidate.positions = listCtrl.chosenPositions;
             $http.post('api/v1/candidates/addCandidate.php', candidate).then(function (res) {
                 candidate.id = res.data.candidateId;
                 listCtrl.candidates.unshift(candidate);
             });
+            listCtrl.chosenPositions = [];
+            listCtrl.candidate = {};
         },
         setCall: function(candidate) {
             candidate.wasCalled = !candidate.wasCalled;
